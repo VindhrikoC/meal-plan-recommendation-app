@@ -12,3 +12,5 @@ Next goals:
 Work on user design
 connect backend to frontend
 create endpoints for frontend to communicate with backend
+
+anything for the green blip of consistancy
