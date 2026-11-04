@@ -33,6 +33,10 @@ async def get_user(user_id: int, db: "Session"):
     user = db.query(_models.User).filter(_models.User.id == user_id).first()
     return user
 
+async def get_ingredients(user_id: int, db: "Session"):
+    user = db.query(_models.User).filter(_models.User.id == user_id).first()
+    return user.ingredients
+
 async def delete_user(user: _models.User, db:"Session"):
     db.delete(user)
     db.commit()
@@ -41,7 +45,18 @@ async def update_user(user_data: _schemas.CreateUser,
                        user: _models.User,
                          db: "Session") -> _schemas.User:
     user.user_name = user_data.user_name
+    user.ingredients = user_data.ingredients
     db.commit()
     db.refresh(user)
 
+    return _schemas.User.from_orm(user)
+#this does not work and i need to fix this
+async def update_ingredients( user: _models.User,
+                              newingredients: List[str],
+                              db: "Session") -> _schemas.User:
+    for i in newingredients:
+        user.ingredients.append(i)
+
+    db.commit()
+    db.refresh(user)
     return _schemas.User.from_orm(user)

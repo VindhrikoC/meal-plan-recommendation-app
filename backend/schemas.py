@@ -1,8 +1,10 @@
 import datetime as _dt
 import pydantic as _pydantic
+from typing import List
 
 class _BaseUser(_pydantic.BaseModel):
     user_name: str
+    ingredients: List[str] = _pydantic.Field(default_factory=list)
 
 class User(_BaseUser):
     id: int

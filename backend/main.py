@@ -50,3 +50,15 @@ async def update_user(user_id: int,
     return await _services.update_user(user_data=user_data,
                                        user=user,
                                        db=db)
+
+@app.put("/api/users/{user_id}/ingredients", response_model=_schemas.User)
+async def update_ingredients(user_id: int,
+                             ingredients: List[str],
+                             db: _orm.Session = _fastapi.Depends(_services.get_db)):
+    user = await _services.get_user(user_id=user_id, db=db)
+    if user is None:
+        raise _fastapi.HTTPException(status_code=404, detail="User does not exist")
+
+    return await _services.update_ingredients(  user=user,
+                                                newingredients=ingredients,
+                                                db=db)

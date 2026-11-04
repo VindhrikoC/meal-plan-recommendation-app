@@ -7,4 +7,5 @@ class User(_database.Base):
     id = _sql.Column(_sql.Integer, primary_key=True, index=True)
     user_name = _sql.Column(_sql.String, index=True, unique=True)
     date_created = _sql.Column(_sql.DateTime, default=_dt.datetime.utcnow)
+    ingredients = _sql.Column(_sql.JSON, default=list)
     
