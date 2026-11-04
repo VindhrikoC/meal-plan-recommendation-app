@@ -50,12 +50,16 @@ async def update_user(user_data: _schemas.CreateUser,
     db.refresh(user)
 
     return _schemas.User.from_orm(user)
-#this does not work and i need to fix this
+
+
 async def update_ingredients( user: _models.User,
                               newingredients: List[str],
                               db: "Session") -> _schemas.User:
+    send = list(user.ingredients)
     for i in newingredients:
-        user.ingredients.append(i)
+        send.append(i)
+    user.ingredients = send
+
 
     db.commit()
     db.refresh(user)
