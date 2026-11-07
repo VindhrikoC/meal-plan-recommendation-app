@@ -33,6 +33,10 @@ async def get_user(user_id: int, db: "Session"):
     user = db.query(_models.User).filter(_models.User.id == user_id).first()
     return user
 
+async def get_user_by_username(user_name: str, db: "Session"):
+    user = db.query(_models.User).filter(_models.User.user_name == user_name).first()
+    return user
+
 async def get_ingredients(user_id: int, db: "Session"):
     user = db.query(_models.User).filter(_models.User.id == user_id).first()
     return user.ingredients
