@@ -7,10 +7,12 @@ by the end of this project there should be:
 Goals complete so far:
 very very basic frontend, done.
 backend skeleton, done.
-
-Next goals:
-Work on user design
 connect backend to frontend
+Work on user design
 create endpoints for frontend to communicate with backend
 
-anything for the green blip of consistancy
+Next goals:
+make a machine learning model to classify user meals based on a 
+content based filtering and cosine similarity ( trying to make this as simple as possible since its my first fullstack app, machine learning model training, backend, frontend, etc etc. )
+
+wont be updating this repo for a couple days i assume while i learn this.
